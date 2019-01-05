@@ -103,5 +103,12 @@ mutation.FFW = [
   mutation.SWAP_NODES
 ];
 
+mutation.train = [
+  mutation.MOD_WEIGHT,
+  mutation.MOD_BIAS,
+  mutation.MOD_ACTIVATION,
+  mutation.SWAP_NODES
+];
+
 /* Export */
 module.exports = mutation;
