@@ -814,6 +814,13 @@ Network.prototype = {
       json.connections.push(tojson);
     }
 
+    //add custom data to genomes
+    let missing_vars = Object.keys(this).filter(x => !Object.keys(json).includes(x));
+    //console.log("missing_vars:" , missing_vars);  
+    for (let v of missing_vars){
+      json[v] = this[v];
+    }
+
     return json;
   },
 
@@ -1126,6 +1133,12 @@ Network.fromJSON = function (json) {
     if (conn.gater != null) {
       network.gate(network.nodes[conn.gater], connection);
     }
+  }
+
+  //add custom data to genomes
+  let missing_vars = Object.keys(json).filter(x => !Object.keys(network).includes(x));  
+  for (let v of missing_vars){
+    network[v] = json[v];
   }
 
   return network;
